@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    './.eslinttrc-auto-import.json',
+  ],
   overrides: [],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -14,5 +20,6 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'no-console': 2,
+    'vue/multi-word-component-names': 0,
   },
 }
