@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import UnoCss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +18,10 @@ export default defineConfig({
         globalsPropValue: true,
       },
       dts: 'types/auto-imports.d.ts',
+    }),
+
+    viteMockServe({
+      mockPath: 'mock',
     }),
   ],
   resolve: {
