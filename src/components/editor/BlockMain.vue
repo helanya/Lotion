@@ -1,13 +1,14 @@
 <template>
-  <div class="outline-transparent flex" :contenteditable="true">
-    <div class="mr-10px">
-      <v-icon class="handle-drag" name="md-dragindicator-twotone" />
-    </div>
+  <div
+    class="outline-transparent flex item-center group py-3px"
+  >
+    <BlockMenu />
     {{ props.block?.details.value }}
   </div>
 </template>
 
 <script setup lang="ts">
+import BlockMenu from './BlockMenu.vue'
 interface Details {
   value: string
 }

@@ -1,6 +1,7 @@
 {
   "tabWidth": 2,
   "useTabs": false,
+  "printWidth": 40,
   "semi": false,
   "singleQuote": true,
   "quoteProps": "as-needed",
@@ -19,7 +20,7 @@
     {
       "files": "*.md",
       "options": {
-        "printWidth": 70,
+        "printWidth": 40,
         "useTabs": false,
         "trailingComma": "none",
         "arrowParens": "avoid",
