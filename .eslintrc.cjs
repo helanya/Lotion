@@ -7,7 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier/recommended',
     './.eslinttrc-auto-import.json',
   ],
   overrides: [],
@@ -17,9 +17,22 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: [
+    'vue',
+    '@typescript-eslint',
+  ],
   rules: {
     'no-console': 2,
+    'no-var': 2,
     'vue/multi-word-component-names': 0,
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 10,
+        multiline: {
+          max: 1,
+        },
+      },
+    ],
   },
 }
