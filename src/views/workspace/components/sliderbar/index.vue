@@ -1,7 +1,8 @@
 <template>
   <div class="h-full w-280px relative bg-light-100 flex-shrink-0" :style="{width: `${sliderWidth}px`}">
-    <div class="flex flex-row">
+    <div class="flex flex-col">
       <UserInfo />
+      <BlockList :blocks="blocks" />
     </div>
     <div class="col-cursor" @mousedown="handleSliderResize"></div>
   </div>
@@ -9,7 +10,17 @@
 
 <script setup lang="ts">
 import UserInfo from './UserInfo.vue'
+import BlockList from './BlockList.vue'
 import { clamp } from '@/utils'
+import { getBlocks, IBlocks } from '@/api/block'
+
+let blocks = ref<IBlocks[]>([])
+
+onMounted(async () => {
+  // eslint-disable-next-line no-console
+  blocks.value =  (await getBlocks()).result as IBlocks[]
+
+})
 
 let sliderWidth = ref(280)
 const sliderMinWidth = 200

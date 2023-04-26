@@ -1,11 +1,11 @@
 import axios from 'axios'
-import type {
-  AxiosInstance,
-  AxiosRequestConfig,
-  InternalAxiosRequestConfig,
-  AxiosError,
-  AxiosResponse,
-} from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
+
+interface ServiceResult<T> {
+  code: number
+  message: string
+  result: T | null
+}
 
 export default class CAxios {
   private instance: AxiosInstance
@@ -26,7 +26,7 @@ export default class CAxios {
 
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
-        return response
+        return response.data
       },
       (error: AxiosError) => {
         return error
@@ -34,15 +34,15 @@ export default class CAxios {
     )
   }
 
-  request<T>(config: AxiosRequestConfig): Promise<T> {
+  request<T>(config: AxiosRequestConfig): Promise<ServiceResult<T>> {
     return this.instance(config)
   }
 
-  get<T>(config: AxiosRequestConfig): Promise<T> {
+  get<T>(config: AxiosRequestConfig): Promise<ServiceResult<T>> {
     return this.request<T>({ ...config, method: 'GET' })
   }
 
-  post<T>(config: AxiosRequestConfig): Promise<T> {
+  post<T>(config: AxiosRequestConfig): Promise<ServiceResult<T>> {
     return this.request<T>({ ...config, method: 'POST' })
   }
 }

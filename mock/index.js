@@ -1,3 +1,4 @@
 //index.js
 import user from './user'
-export default [user]
+import block from './block'
+export default [user, block]
